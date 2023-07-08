@@ -12,6 +12,8 @@ class _HomePageState extends State<HomePage> {
   Color cardColor = Color(0xff28293D);
   bool isMale = true;
   String gender = 'Male';
+  int weight = 3;
+  int age = 3;
 
   @override
   Widget build(BuildContext context) {
@@ -119,10 +121,82 @@ class _HomePageState extends State<HomePage> {
           ),
           Expanded(
             flex: 10,
-            child: Container(
-              color: Colors.red,
-            ),
+            child: Row(children: [
+              Expanded(
+                flex: 5,
+                child: Card(
+                  color: cardColor,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                    Text('Weight',style: TextStyle(color: Colors.white),),
+                      Text('$weight',style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.w700),),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                        FloatingActionButton(
+                          backgroundColor: Colors.white12,
+                          mini: true,
+                          onPressed: (){
+                            if(weight>1) setState(() {
+                              weight--;
+                            });
+                          },
+
+                        child: Icon(Icons.remove),),
+                          SizedBox(width: 10),
+                          FloatingActionButton(
+                            backgroundColor: Colors.white12,
+                            mini: true,
+                            onPressed: (){
+                              setState(() {
+                                weight++;
+                              });
+                            },
+                            child: Icon(Icons.add),),
+                      ],)
+                  ],)
+                ),
+              ),
+              Expanded(
+                flex: 5,
+                child: Card(
+                    color: cardColor,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Age',style: TextStyle(color: Colors.white),),
+                        Text('$age',style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.w700),),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            FloatingActionButton(
+                              backgroundColor: Colors.white12,
+                              mini: true,
+                              onPressed: (){
+                                if(age>1) setState(() {
+                                  age--;
+                                });
+                              },
+                              child: Icon(Icons.remove),),
+                            SizedBox(width: 10),
+                            FloatingActionButton(
+                              backgroundColor: Colors.white12,
+                              mini: true,
+                              onPressed: (){
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                              child: Icon(Icons.add),),
+                          ],)
+                      ],)
+                ),
+              ),
+
+            ],),
           ),
+
         ],
       ),
     );
