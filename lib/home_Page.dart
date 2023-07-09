@@ -10,7 +10,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   Color bgColor = Color(0xff0E0E0E);
   Color cardColor = Color(0xff28293D);
-  bool isMale = true;
   String gender = 'Male';
   int weight = 50;
   int age = 25;
@@ -282,10 +281,10 @@ class _HomePageState extends State<HomePage> {
             child: Text(
               'Calculate',
               style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold,fontSize: 25,letterSpacing: 15),
             ),
             minWidth: double.infinity,
-            color: Colors.teal,
+            color: Colors.red,
             height: 60,
           )
         ],

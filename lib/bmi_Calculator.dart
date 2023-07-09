@@ -1,105 +1,107 @@
 import 'package:flutter/material.dart';
 
-class Practice01 extends StatefulWidget {
-  const Practice01({super.key});
+class HomePage2 extends StatefulWidget {
+  const HomePage2({super.key});
 
   @override
-  State<Practice01> createState() => _Practice01State();
+  State<HomePage2> createState() => _HomePage2State();
 }
 
-class _Practice01State extends State<Practice01> {
-  Color bgColor=Color(0xff0E0E0E);
-  Color cardColor=Color(0xff28293D);
-  bool isName=true;
-
+class _HomePage2State extends State<HomePage2> {
+  Color bgColor = Color(0xff0E0E0E);
+  Color cardColor = Color(0xff28293D);
+  Color textColor = Colors.white;
+  String gender = 'Male';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bgColor,
-        appBar: AppBar(
-          backgroundColor: bgColor,
-          title: Text(
-            "BMI Calculator",
-            style: TextStyle(color: Colors.white),
+      appBar: AppBar(
+        backgroundColor: bgColor,
+        title: Text(
+          'BMI Calculator',
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
+      body: Column(children: [
+        Expanded(
+          flex: 10,
+          child: Container(
+            child: Row(children: [
+              Expanded(
+                flex: 5,
+                child: Card(
+                  color: cardColor,
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.people,
+                          color: textColor,
+                          size: 40,
+                        ),
+                        Text(
+                          'Male',
+                          style: TextStyle(color: textColor, fontSize: 20),
+                        )
+                      ]),
+                ),
+              ),
+              Expanded(
+                flex: 5,
+                child: Card(
+                  color: cardColor,
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.people,
+                          color: textColor,
+                          size: 40,
+                        ),
+                        Text(
+                          'Female',
+                          style: TextStyle(color: textColor, fontSize: 20),
+                        )
+                      ]),
+                ),
+              ),
+              Expanded(
+                flex: 5,
+                child: Card(
+                  color: cardColor,
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.people,
+                          color: textColor,
+                          size: 40,
+                        ),
+                        Text(
+                          'Others',
+                          style: TextStyle(color: textColor, fontSize: 20),
+                        )
+                      ]),
+                ),
+              ),
+            ]),
           ),
         ),
-        body: Column(
-          children: [
-            Expanded(
-              flex: 10,
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 10,
-                    child: InkWell(
-                      onTap: (){
-                        setState(() {
-                          isName=true;
-                        });
-                      },
-                      child: Card(
-                        color: isName==true? Colors.teal:cardColor,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.male,
-                              size: 45,
-                              color: Colors.white,
-                            ),
-                            Text(
-                              "Male",
-                              style: TextStyle(color: Colors.white),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 10,
-                    child: InkWell(
-                      onTap: (){
-                        setState(() {
-                          isName=false;
-                        });
-                      },
-                      child: Card(
-                        color: isName==false? Colors.teal:cardColor,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.female,
-                              size: 45,
-                              color: Colors.white,
-                            ),
-                            Text(
-                              "Female",
-                              style: TextStyle(color: Colors.white),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              flex: 10,
-              child: Container(
-                color: Colors.yellow,
-              ),
-            ),
-            Expanded(
-              flex: 10,
-              child: Container(
-                color: Colors.grey,
-              ),
-            ),
-          ],
-        ));
+        Expanded(
+          flex: 10,
+          child: Container(
+            color: Colors.amber,
+          ),
+        ),
+        Expanded(
+          flex: 10,
+          child: Container(
+            color: Colors.blue,
+          ),
+        ),
+      ]),
+    );
   }
 }
