@@ -12,6 +12,7 @@ class _HomePage2State extends State<HomePage2> {
   Color cardColor = Color(0xff28293D);
   Color textColor = Colors.white;
   String gender = 'Male';
+  double height = 150;
 
   @override
   Widget build(BuildContext context) {
@@ -32,58 +33,79 @@ class _HomePage2State extends State<HomePage2> {
               Expanded(
                 flex: 5,
                 child: Card(
-                  color: cardColor,
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.people,
-                          color: textColor,
-                          size: 40,
-                        ),
-                        Text(
-                          'Male',
-                          style: TextStyle(color: textColor, fontSize: 20),
-                        )
-                      ]),
+                  color: gender == 'Male' ? Colors.teal : cardColor,
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        gender = 'Male';
+                      });
+                    },
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.people,
+                            color: textColor,
+                            size: 40,
+                          ),
+                          Text(
+                            'Male',
+                            style: TextStyle(color: textColor, fontSize: 20),
+                          )
+                        ]),
+                  ),
                 ),
               ),
               Expanded(
                 flex: 5,
                 child: Card(
-                  color: cardColor,
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.people,
-                          color: textColor,
-                          size: 40,
-                        ),
-                        Text(
-                          'Female',
-                          style: TextStyle(color: textColor, fontSize: 20),
-                        )
-                      ]),
+                  color: gender == 'Female' ? Colors.teal : cardColor,
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        gender = 'Female';
+                      });
+                    },
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.people,
+                            color: textColor,
+                            size: 40,
+                          ),
+                          Text(
+                            'Female',
+                            style: TextStyle(color: textColor, fontSize: 20),
+                          )
+                        ]),
+                  ),
                 ),
               ),
               Expanded(
                 flex: 5,
                 child: Card(
-                  color: cardColor,
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.people,
-                          color: textColor,
-                          size: 40,
-                        ),
-                        Text(
-                          'Others',
-                          style: TextStyle(color: textColor, fontSize: 20),
-                        )
-                      ]),
+                  color: gender == 'Others' ? Colors.teal : cardColor,
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        gender = 'Others';
+                      });
+                    },
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.people,
+                            color: textColor,
+                            size: 40,
+                          ),
+                          Text(
+                            'Others',
+                            style: TextStyle(color: textColor, fontSize: 20),
+                          )
+                        ]),
+                  ),
                 ),
               ),
             ]),
@@ -91,8 +113,32 @@ class _HomePage2State extends State<HomePage2> {
         ),
         Expanded(
           flex: 10,
-          child: Container(
-            color: Colors.amber,
+          child: Card(
+            color: cardColor,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Height',
+                  style: TextStyle(color: Colors.white, fontSize: 18),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  textBaseline: TextBaseline.alphabetic,
+                  children: [
+                    Text(
+                      '$height',
+                      style: TextStyle(color: Colors.white, fontSize: 40),
+                    ),
+                    Text(
+                      'CM',
+                      style: TextStyle(color: Colors.white, fontSize: 15),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
         Expanded(
