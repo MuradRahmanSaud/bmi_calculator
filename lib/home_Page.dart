@@ -12,15 +12,16 @@ class _HomePageState extends State<HomePage> {
   Color cardColor = Color(0xff28293D);
   bool isMale = true;
   String gender = 'Male';
-  int weight = 3;
-  int age = 3;
+  int weight = 50;
+  int age = 25;
+  int height = 165;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bgColor,
       appBar: AppBar(
-        title: Text('BMI Calculator Murad'),
+        title: Text('BMI Calculator'),
         backgroundColor: bgColor,
       ),
       body: Column(
@@ -115,88 +116,178 @@ class _HomePageState extends State<HomePage> {
           ),
           Expanded(
             flex: 10,
-            child: Container(
-              color: Colors.amber,
+            child: Card(
+              color: cardColor,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Height',
+                    style: TextStyle(color: Colors.white, fontSize: 15),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(
+                        '$height',
+                        style: TextStyle(color: Colors.white, fontSize: 25),
+                      ),
+                      Text(
+                        'CM',
+                        style: TextStyle(color: Colors.amber, fontSize: 12),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(20),
+                    child: Slider(
+                        thumbColor: Colors.teal,
+                        activeColor: Colors.red,
+                        min: 50,
+                        max: 220,
+                        value: height.toDouble(),
+                        onChanged: (value) {
+                          setState(() {
+                            height = value.toInt();
+                          });
+                        }),
+                  )
+                ],
+              ),
             ),
           ),
           Expanded(
             flex: 10,
-            child: Row(children: [
-              Expanded(
-                flex: 5,
-                child: Card(
-                  color: cardColor,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                    Text('Weight',style: TextStyle(color: Colors.white),),
-                      Text('$weight',style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.w700),),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                        FloatingActionButton(
-                          backgroundColor: Colors.white12,
-                          mini: true,
-                          onPressed: (){
-                            if(weight>1) setState(() {
-                              weight--;
-                            });
-                          },
-
-                        child: Icon(Icons.remove),),
-                          SizedBox(width: 10),
-                          FloatingActionButton(
-                            backgroundColor: Colors.white12,
-                            mini: true,
-                            onPressed: (){
-                              setState(() {
-                                weight++;
-                              });
-                            },
-                            child: Icon(Icons.add),),
-                      ],)
-                  ],)
-                ),
-              ),
-              Expanded(
-                flex: 5,
-                child: Card(
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 5,
+                  child: Card(
                     color: cardColor,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text('Age',style: TextStyle(color: Colors.white),),
-                        Text('$age',style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.w700),),
+                        Text(
+                          'Weight',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          '$weight',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 25,
+                              fontWeight: FontWeight.w700),
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             FloatingActionButton(
                               backgroundColor: Colors.white12,
                               mini: true,
-                              onPressed: (){
-                                if(age>1) setState(() {
-                                  age--;
-                                });
+                              onPressed: () {
+                                if (weight > 1)
+                                  setState(() {
+                                    weight--;
+                                  });
                               },
-                              child: Icon(Icons.remove),),
+                              child: Icon(Icons.remove),
+                            ),
                             SizedBox(width: 10),
                             FloatingActionButton(
                               backgroundColor: Colors.white12,
                               mini: true,
-                              onPressed: (){
+                              onPressed: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                              child: Icon(Icons.add),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 5,
+                  child: Card(
+                    color: cardColor,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Age',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          '$age',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 25,
+                              fontWeight: FontWeight.w700),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            FloatingActionButton(
+                              backgroundColor: Colors.white12,
+                              mini: true,
+                              onPressed: () {
+                                if (age > 1)
+                                  setState(() {
+                                    age--;
+                                  });
+                              },
+                              child: Icon(Icons.remove),
+                            ),
+                            SizedBox(width: 10),
+                            FloatingActionButton(
+                              backgroundColor: Colors.white12,
+                              mini: true,
+                              onPressed: () {
                                 setState(() {
                                   age++;
                                 });
                               },
-                              child: Icon(Icons.add),),
-                          ],)
-                      ],)
+                              child: Icon(Icons.add),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-
-            ],),
+              ],
+            ),
           ),
-
+          MaterialButton(
+            onPressed: () {
+              double h = height / 100;
+              double heightSquare = h * h;
+              double result = weight / heightSquare;
+              print('The result is ${result}');
+            },
+            child: Text(
+              'Calculate',
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            ),
+            minWidth: double.infinity,
+            color: Colors.teal,
+            height: 60,
+          )
         ],
       ),
     );
