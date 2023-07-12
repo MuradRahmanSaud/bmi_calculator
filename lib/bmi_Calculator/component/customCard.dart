@@ -38,7 +38,7 @@ class CustomCard extends StatelessWidget {
                 title,
                 style: TextStyle(color: Colors.white),
               ),
-              Icon(icon)
+              Icon(icon,color: Colors.white,)
             ],
           ),
         ),

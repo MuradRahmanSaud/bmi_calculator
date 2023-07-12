@@ -1,4 +1,5 @@
 import 'package:bmi_calculator/bmi_Calculator.dart';
+import 'package:bmi_calculator/bmi_Calculator/screens/home.dart';
 import 'package:bmi_calculator/home_Page.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
       ),
-      home: HomePage2(),
+      home: Home(),
     );
   }
 }
